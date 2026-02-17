@@ -4,7 +4,7 @@
   "description": "CLI oficial da InnovationHub para inicializar projetos Backend e Frontend.",
   "main": "index.js",
   "bin": {
-    "innovationhub": "./index.js"
+    "innovationhub": "index.js"
   },
   "repository": {
     "type": "git",
