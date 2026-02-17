@@ -4,12 +4,12 @@ import pc from 'picocolors';
 import fs from 'node:fs/promises';
 
 const REPOS = {
-    nest: 'https://github.com/innovation-hub/template-nest.git',
-    python: 'https://github.com/innovation-hub/template-fastapi.git',
-    java: 'https://github.com/innovation-hub/template-spring.git',
-    next: 'https://github.com/innovation-hub/template-nextjs.git',
-    vue: 'https://github.com/innovation-hub/template-vue.git',
-    angular: 'https://github.com/innovation-hub/template-angular.git',
+    nest: 'https://github.com/ProHub-Innovation/template-nest.git',
+    python: 'https://github.com/ProHub-Innovation/template-fastapi.git',
+    java: 'https://github.com/ProHub-Innovation/template-spring.git',
+    next: 'https://github.com/ProHub-Innovation/template-nextjs.git',
+    vue: 'https://github.com/ProHub-Innovation/template-vue.git',
+    angular: 'https://github.com/ProHub-Innovation/template-angular.git',
 };
 
 export async function setupProject(stack, projectName) {
