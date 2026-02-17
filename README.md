@@ -54,16 +54,33 @@ npm link
 innovationhub
 ```
 
-## Publicação
+## Publicação e Atualização
 
-Para publicar uma nova versão no NPM:
+Para liberar uma nova versão para todos os usuários:
 
-1. Atualize a versão no `package.json`.
-2. Faça login no npm (se ainda não fez):
-   ```bash
-   npm login
-   ```
-3. Publique:
-   ```bash
-   npm publish --access public
-   ```
+1.  **Atualize a versão**:
+    Use o comando do npm para atualizar o `package.json` automaticamente (seguindo semantic versioning):
+    
+    ```bash
+    # Para correções de bugs (1.0.0 -> 1.0.1)
+    npm version patch
+
+    # Para novas funcionalidades (1.0.0 -> 1.1.0)
+    npm version minor
+
+    # Para mudanças que quebram compatibilidade (1.0.0 -> 2.0.0)
+    npm version major
+    ```
+
+2.  **Login no NPM** (se executado pela primeira vez):
+    ```bash
+    npm login
+    ```
+
+3.  **Publique**:
+    ```bash
+    npm publish --access public
+    ```
+
+Os usuários que usam `npx innovationhub-cli` pegarão a nova versão automaticamente (pode levar alguns minutos para o cache do npx atualizar).
+Quem instalou globalmente precisará rodar `npm install -g innovationhub-cli` novamente para atualizar.

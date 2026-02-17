@@ -1,6 +1,6 @@
 {
   "name": "innovationhub-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI oficial da InnovationHub para inicializar projetos Backend e Frontend.",
   "main": "index.js",
   "bin": {
