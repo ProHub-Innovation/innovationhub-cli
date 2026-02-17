@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import * as p from '@clack/prompts';
 import { setupProject } from './utils/git.js';
 

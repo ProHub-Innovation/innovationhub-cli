@@ -1,12 +1,25 @@
 {
   "name": "innovationhub-cli",
   "version": "1.0.0",
-  "description": "",
+  "description": "CLI oficial da InnovationHub para inicializar projetos Backend e Frontend.",
   "main": "index.js",
+  "bin": {
+    "innovationhub": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/innovation-hub/prohub-cli.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "cli",
+    "scaffold",
+    "innovation-hub",
+    "backend",
+    "frontend"
+  ],
   "author": "",
   "license": "ISC",
   "type": "module",
