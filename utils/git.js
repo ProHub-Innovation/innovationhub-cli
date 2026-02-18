@@ -1,46 +1,70 @@
-import { execa } from 'execa';
-import * as p from '@clack/prompts';
-import pc from 'picocolors';
-import fs from 'node:fs/promises';
+import { execa } from "execa";
+import * as p from "@clack/prompts";
+import pc from "picocolors";
+import fs from "node:fs/promises";
+import path from "node:path";
 
-const REPOS = {
-    nest: 'https://github.com/ProHub-Innovation/template-nest.git',
-    python: 'https://github.com/ProHub-Innovation/template-fastapi.git',
-    java: 'https://github.com/ProHub-Innovation/template-spring.git',
-    next: 'https://github.com/ProHub-Innovation/template-nextjs.git',
-    vue: 'https://github.com/ProHub-Innovation/template-vue.git',
-    angular: 'https://github.com/ProHub-Innovation/template-angular.git',
-};
+const TEMPLATE_REPO =
+    "https://github.com/ProHub-Innovation/innovation-templates.git";
 
-export async function setupProject(stack, projectName) {
+    export async function setupProject(stack, projectName, addons = []) {
+    const tempDir = `.temp-${Date.now()}`;
     const s = p.spinner();
-    s.start(`Baixando template oficial para ${stack}...`);
+    s.start(`Preparando base ${stack}...`);
 
     try {
-        if (!REPOS[stack]) {
-            throw new Error(`Template para '${stack}' não encontrado.`);
+        await execa("git", ["clone", "--depth", "1", TEMPLATE_REPO, tempDir]);
+        const stackPath = path.join(tempDir, stack);
+        try {
+        await fs.access(stackPath);
+        } catch {
+        throw new Error( `Template para '${stack}' não encontrado no repositório.`);
         }
 
-        await execa('git', ['clone', REPOS[stack], projectName]);
+        await fs.cp(stackPath, projectName, { recursive: true });
+        if (addons.length > 0) {
+        s.message("Instalando addons...");
+        for (const addon of addons) {
+            const addonSource = path.join(tempDir, "addons", addon);
+            try {
+            await fs.access(addonSource);
+            } catch {
+            continue;
+            }
 
-        // Remove .git folder to detach from the template repository
-        const gitPath = `${projectName}/.git`;
-        await fs.rm(gitPath, { recursive: true, force: true });
+            if (addon === "github") {
+            const githubDest = path.join(projectName, ".github");
+            await fs.mkdir(githubDest, { recursive: true });
+            await fs.cp(addonSource, githubDest, { recursive: true });
+            } else if (addon === "cloudinary") {
+            const cloudinaryDest = path.join(projectName, "src/cloudinary");
+            await fs.mkdir(cloudinaryDest, { recursive: true });
+            await fs.cp(addonSource, cloudinaryDest, { recursive: true });
+            } else {
+            await fs.cp(addonSource, projectName, { recursive: true });
+            }
+        }
+        }
+        await fs.rm(tempDir, { recursive: true, force: true });
+        const gitPath = path.join(projectName, ".git");
+        await fs.rm(gitPath, { recursive: true, force: true }).catch(() => {});
+        await execa("git", ["init"], { cwd: projectName });
 
-        // Initialize a new git repository
-        await execa('git', ['init'], { cwd: projectName });
+        s.stop(pc.green("Projeto configurado com sucesso!"));
 
-        s.stop(pc.green('Template configurado com sucesso!'));
-
-        p.note(`
-        Pŕoximos passos:
-        1. cd ${projectName}
-        2. npm install (ou gerenciador de preferência)
-        3. Validar variáveis de ambiente (.env)
-        `, 'Tudo pronto!');
-
+        p.note(
+        `
+            Próximos passos:
+            1. cd ${projectName}
+            2. npm install (ou gerenciador de preferência)
+            3. Validar variáveis de ambiente (.env)
+            `,
+        "Tudo pronto!",
+        );
     } catch (error) {
-        s.stop(pc.red('Erro ao configurar o projeto.'));
+        await fs.rm(tempDir, { recursive: true, force: true }).catch(() => {});
+
+        s.stop(pc.red("Erro ao configurar o projeto."));
         p.cancel(error.message);
         process.exit(1);
     }
