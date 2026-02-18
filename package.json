@@ -20,7 +20,7 @@
     "backend"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "type": "module",
   "dependencies": {
     "@clack/prompts": "^1.0.1",
