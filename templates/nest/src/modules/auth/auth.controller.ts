@@ -7,8 +7,8 @@ import {
   HttpCode,
   HttpStatus,
 } from '@nestjs/common';
-import { User } from '../common/decorators/user.decorator';
-import { UserEntity } from '../user/entities/user.entity';
+import { User } from '@common/decorators/user.decorator';
+import { UserEntity } from '@modules/user/entities/user.entity';
 import {
   ApiTags,
   ApiOperation,

@@ -1,9 +1,9 @@
 import { Column, DeleteDateColumn, Entity, OneToMany } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
-import { Role } from '../../auth/enums/role.enum';
+import { Role } from '@modules/auth/enums/role.enum';
 import { Exclude, Expose } from 'class-transformer';
-import { BaseEntity } from '../../common/base.entity';
-import { RefreshTokenEntity } from '../../auth/entities/refresh-token.entity';
+import { BaseEntity } from '@common/base.entity';
+import { RefreshTokenEntity } from '@modules/auth/entities/refresh-token.entity';
 
 @Entity('users')
 @Exclude()

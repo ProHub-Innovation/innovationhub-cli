@@ -14,4 +14,9 @@ module.exports = {
   ],
   coverageDirectory: '../coverage',
   testEnvironment: 'node',
+  moduleNameMapper: {
+    '^@common/(.*)$': '<rootDir>/core/common/$1',
+    '^@core/(.*)$': '<rootDir>/core/$1',
+    '^@modules/(.*)$': '<rootDir>/modules/$1',
+  },
 };

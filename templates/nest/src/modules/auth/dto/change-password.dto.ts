@@ -1,6 +1,6 @@
 import { IsString, MinLength } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { ERRORS } from '../../common/constants/errors.constants';
+import { ERRORS } from '@common/constants/errors.constants';
 
 export class ChangePasswordDto {
   @ApiProperty({

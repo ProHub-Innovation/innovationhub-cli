@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Brackets, Repository, IsNull } from 'typeorm';
-import { BaseRepository } from '../common/base.repository';
+import { BaseRepository } from '@common/base.repository';
 import { UserEntity } from './entities/user.entity';
 import { QueryUsersDto } from './dto/query-users.dto';
-import { buildPaginationMeta } from '../common/utils/pagination.utils';
+import { buildPaginationMeta } from '@common/utils/pagination.utils';
 
 @Injectable()
 export class UsersRepository extends BaseRepository<UserEntity> {

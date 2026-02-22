@@ -149,7 +149,7 @@ Os usuários que usam `npx innovationhub-cli` pegarão a nova versão automatica
 
 ## Autor
 
-Desenvolvido por **[Guilherme Araújo](https://github.com/Slotov7)** ·
+Desenvolvido por **[Guilherme Araújo](https://github.com/Slotov7)** · **[Victor Chagas](https://github.com/VictorChagasS)** ·
 
 [Liga Acadêmica de Empreendedorismo Innovation Hub](https://github.com/ProHub-Innovation)
 

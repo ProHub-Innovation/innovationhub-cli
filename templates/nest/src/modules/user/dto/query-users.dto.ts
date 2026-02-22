@@ -1,6 +1,6 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { IsIn, IsOptional, IsString } from 'class-validator';
-import { BaseQueryDto } from '../../common/dto/base-query.dto';
+import { BaseQueryDto } from '@common/dto/base-query.dto';
 
 export class QueryUsersDto extends BaseQueryDto {
   @ApiPropertyOptional({

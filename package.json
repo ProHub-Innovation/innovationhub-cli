@@ -29,7 +29,7 @@
     "innovation-hub",
     "backend"
   ],
-  "author": "Guilherme Araújo",
+  "author": "Guilherme Araújo, Victor Chagas",
   "license": "MIT",
   "type": "module",
   "dependencies": {

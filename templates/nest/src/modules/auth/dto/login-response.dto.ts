@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Expose } from 'class-transformer';
-import { UserEntity } from '../../user/entities/user.entity';
+import { UserEntity } from '@modules/user/entities/user.entity';
 
 export class LoginResponseDto {
   @ApiProperty()

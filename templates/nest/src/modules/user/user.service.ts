@@ -4,14 +4,14 @@ import {
   InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
-import { ERRORS } from '../common/constants/errors.constants';
+import { ERRORS } from '@common/constants/errors.constants';
 import { UserEntity } from './entities/user.entity';
 import * as bcrypt from 'bcryptjs';
 import { CreateUserDto } from './dto/create-user.dto';
 import { ConfigService } from '@nestjs/config';
 import { QueryUsersDto } from './dto/query-users.dto';
 import { UsersRepository } from './user.repository';
-import { BaseService } from '../common/base.service';
+import { BaseService } from '@common/base.service';
 import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()

@@ -5,19 +5,19 @@ import {
   ForbiddenException,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { UserService } from '../user/user.service';
+import { UserService } from '@modules/user/user.service';
 import { JwtService } from '@nestjs/jwt';
-import { ERRORS } from '../common/constants/errors.constants';
-import { UserEntity } from '../user/entities/user.entity';
+import { ERRORS } from '@common/constants/errors.constants';
+import { UserEntity } from '@modules/user/entities/user.entity';
 import { ChangePasswordDto } from './dto/change-password.dto';
 import * as bcrypt from 'bcryptjs';
-import { UsersRepository } from '../user/user.repository';
+import { UsersRepository } from '@modules/user/user.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { RefreshTokenEntity } from './entities/refresh-token.entity';
 import { Repository } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';
 import { LoginResponseDto } from './dto/login-response.dto';
-import { parseDurationToSeconds } from '../common/utils/duration.utils';
+import { parseDurationToSeconds } from '@common/utils/duration.utils';
 
 @Injectable()
 export class AuthService {
