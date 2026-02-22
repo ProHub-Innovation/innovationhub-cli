@@ -14,6 +14,15 @@ import {
 const require = createRequire(import.meta.url);
 const { version } = require("./package.json");
 
+const banner = `
+${pc.blue("  ___                            _   _")}            ${pc.yellow(" _   _       _")}
+${pc.blue(" |_ _|_ __  _ __   _____   ____ _| |_(_) ___  _ __")} ${pc.yellow("| | | |_   _| |__")}
+${pc.blue("  | || '_ \\| '_ \\ / _ \\ \\ / / _` | __| |/ _ \\| '_ \\")}${pc.yellow("| |_| | | | | '_ \\")}
+${pc.blue("  | || | | | | | | (_) \\ V / (_| | |_| | (_) | | | |")}${pc.yellow("  _  | |_| | |_) |")}
+${pc.blue(" |___|_| |_|_| |_|\\___/ \\_/ \\__,_|\\__|_|\\___/|_| |_|")}${pc.yellow("_| |_|\\__,_|_.__/")}
+${pc.dim(`                                                    v${version}`)}
+`;
+
 // ── Parse CLI flags ──────────────────────────────────────────────
 const { values: flags } = parseArgs({
   options: {
@@ -63,7 +72,8 @@ ${pc.bold("Exemplos:")}
 }
 
 async function main() {
-  p.intro(pc.bgCyan(pc.black(` InnovationHub CLI v${version} `)));
+  console.log(banner);
+  p.intro(pc.bgCyan(pc.black(" InnovationHub CLI ")));
 
   // Descobrir stacks disponíveis
   const availableStacks = await getAvailableStacks();
