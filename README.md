@@ -146,3 +146,13 @@ npm publish --access public
 ```
 
 Os usuários que usam `npx innovationhub-cli` pegarão a nova versão automaticamente.
+
+## Autor
+
+Desenvolvido por **[Guilherme Araújo](https://github.com/Slotov7)** ·
+
+[Liga Acadêmica de Empreendedorismo Innovation Hub](https://github.com/ProHub-Innovation)
+
+## Licença
+
+[MIT](LICENSE) © 2026 Innovation Hub
