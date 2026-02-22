@@ -1,6 +1,6 @@
 # InnovationHub CLI
 
-Ferramenta oficial para inicializar projetos Backend e Frontend na InnovationHub.
+Ferramenta oficial para inicializar projetos Backend na InnovationHub.
 
 ## Instalação
 
@@ -18,31 +18,109 @@ npm install -g innovationhub-cli
 
 ## Como Usar
 
-Execute o comando no terminal:
+### Modo Interativo
+
+Execute o comando e siga os passos:
 
 ```bash
 innovationhub
 ```
-Ou se não instalou:
+
+O CLI vai guiar você por:
+
+1. **Nome do Projeto** — nome da pasta
+2. **Stack** — NestJS ou Python (FastAPI)
+3. **Addons** — recursos opcionais (variam por stack)
+4. **Resumo** — revise e confirme
+5. **Dependências** — instalar automaticamente (opcional)
+
+### Modo Direto (CLI Flags)
+
+Para automação ou uso rápido via flags:
+
 ```bash
-npx innovationhub-cli
+# Criar projeto completo
+innovationhub --name meu-api --stack nest --addons cloudinary,.github --install
+
+# Mínimo, sem addons e sem confirmações
+innovationhub -n meu-api -s nest -y
+
+# Python com todos os addons
+innovationhub -n minha-api -s python -a cloudinary,.github,pre-commit -i -y
 ```
 
-Siga os passos interativos:
-1.  **Nome do Projeto**: Defina o nome da pasta.
-2.  **Categoria**: Backend ou Frontend.
-3.  **Stack**: Escolha a tecnologia (NestJS, Python, Java, Next.js, Vue, Angular).
+#### Flags Disponíveis
 
-O CLI irá baixar o template oficial do GitHub da organização `innovation-hub` e configurar o git inicial.
+| Flag               | Short | Descrição                             |
+| ------------------ | ----- | ------------------------------------- |
+| `--name <nome>`    | `-n`  | Nome do projeto                       |
+| `--stack <stack>`  | `-s`  | Stack (`nest` ou `python`)            |
+| `--addons <lista>` | `-a`  | Addons separados por vírgula          |
+| `--install`        | `-i`  | Instalar dependências automaticamente |
+| `--yes`            | `-y`  | Pular confirmações                    |
+| `--version`        | `-v`  | Mostrar versão                        |
+| `--help`           | `-h`  | Mostrar ajuda                         |
+
+> **Dica:** as flags são opcionais — se faltar alguma, o CLI pergunta interativamente.
+
+## Stacks Disponíveis
+
+| Stack                | Descrição                                         |
+| -------------------- | ------------------------------------------------- |
+| **NestJS**           | Backend Node.js com TypeScript, TypeORM, JWT Auth |
+| **Python (FastAPI)** | Backend Python com SQLAlchemy, Alembic, JWT Auth  |
+
+### Criando Novas Stacks
+
+Para adicionar uma nova stack, crie uma pasta em `templates/{nome}/` com um `template.json`:
+
+```json
+{
+  "label": "Nome Exibido",
+  "description": "Descrição curta da stack"
+}
+```
+
+O CLI descobre as stacks automaticamente — sem precisar alterar o código.
+
+## Addons por Stack
+
+Cada stack possui addons específicos. Ao selecionar uma stack, o CLI mostra apenas os addons disponíveis para ela.
+
+**NestJS:**
+
+- Cloudinary (Upload de Imagens)
+- GitHub Actions (CI/CD)
+- Husky (Lint & Commits)
+
+**Python (FastAPI):**
+
+- Cloudinary (Upload de Imagens)
+- GitHub Actions (CI/CD)
+- Pre-commit (Lint & Formatação)
+
+### Criando Novos Addons
+
+Para adicionar um novo addon a uma stack:
+
+1. Crie uma pasta em `templates/{stack}/addons/{nome-do-addon}/`
+2. Adicione a entrada no `templates/{stack}/addons/addons.json`:
+   ```json
+   {
+     "name": "nome-do-addon",
+     "label": "Nome Amigável",
+     "dest": "caminho/destino"
+   }
+   ```
+
+O CLI descobre os addons automaticamente — sem precisar alterar o código.
 
 ## Desenvolvimento
 
-Para rodar localmente enquanto desenvolve:
-
 ```bash
 # Clone este repositório
-git clone https://github.com/innovation-hub/prohub-cli.git
-cd prohub-cli
+git clone https://github.com/ProHub-Innovation/innovationhub-cli.git
+cd innovationhub-cli
 
 # Instale as dependências
 npm install
@@ -54,33 +132,17 @@ npm link
 innovationhub
 ```
 
-## Publicação e Atualização
+## Publicação
 
-Para liberar uma nova versão para todos os usuários:
+```bash
+# Atualizar versão (semver)
+npm version patch|minor|major
 
-1.  **Atualize a versão**:
-    Use o comando do npm para atualizar o `package.json` automaticamente (seguindo semantic versioning):
-    
-    ```bash
-    # Para correções de bugs (1.0.0 -> 1.0.1)
-    npm version patch
+# Login no NPM (primeira vez)
+npm login
 
-    # Para novas funcionalidades (1.0.0 -> 1.1.0)
-    npm version minor
+# Publicar
+npm publish --access public
+```
 
-    # Para mudanças que quebram compatibilidade (1.0.0 -> 2.0.0)
-    npm version major
-    ```
-
-2.  **Login no NPM** (se executado pela primeira vez):
-    ```bash
-    npm login
-    ```
-
-3.  **Publique**:
-    ```bash
-    npm publish --access public
-    ```
-
-Os usuários que usam `npx innovationhub-cli` pegarão a nova versão automaticamente (pode levar alguns minutos para o cache do npx atualizar).
-Quem instalou globalmente precisará rodar `npm install -g innovationhub-cli` novamente para atualizar.
+Os usuários que usam `npx innovationhub-cli` pegarão a nova versão automaticamente.

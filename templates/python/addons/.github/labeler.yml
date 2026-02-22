@@ -1,0 +1,29 @@
+# Area Labels
+area/auth:
+  - app/auth/**/*
+
+area/user:
+  - app/user/**/*
+
+area/common:
+  - app/common/**/*
+
+area/core:
+  - app/core/**/*
+
+# Type Labels (Inferred from files)
+documentation:
+  - README.md
+  - LICENSE
+  - "**/*.md"
+
+ci:
+  - .github/**/*
+
+test:
+  - tests/**/*
+  - "**/*test*.py"
+
+dependencies:
+  - pyproject.toml
+  - requirements*.txt

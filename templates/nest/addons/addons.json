@@ -1,0 +1,17 @@
+[
+  {
+    "name": "cloudinary",
+    "label": "Cloudinary (Upload de Imagens)",
+    "dest": "src/cloudinary"
+  },
+  {
+    "name": ".github",
+    "label": "GitHub Actions (CI/CD)",
+    "dest": ".github"
+  },
+  {
+    "name": ".husky",
+    "label": "Husky (Lint & Commits)",
+    "dest": ".husky"
+  }
+]

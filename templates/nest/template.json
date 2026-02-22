@@ -1,0 +1,5 @@
+{
+  "label": "NestJS",
+  "description": "Backend Node.js com TypeScript, TypeORM, JWT Auth",
+  "installCmd": "npm install"
+}

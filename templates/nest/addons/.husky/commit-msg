@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Regex for Conventional Commits
+pattern="^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?: .+$"
+
+while read -r line; do
+  if ! echo "$line" | grep -qE "$pattern"; then
+    echo "❌ Invalid commit message format."
+    echo "Please use the Conventional Commits pattern:"
+    echo "  <type>(<scope>): <subject>"
+    echo "Valid types: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert"
+    echo "Example: feat(auth): add google login"
+    exit 1
+  fi
+  # Only check the first line (subject)
+  break
+done < "$1"

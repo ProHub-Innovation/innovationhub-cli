@@ -1,6 +1,6 @@
 {
   "name": "innovationhub-cli",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "CLI oficial da InnovationHub para inicializar projetos.",
   "main": "index.js",
   "bin": {
@@ -13,6 +13,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "index.js",
+    "utils/",
+    "templates/",
+    "!templates/*/node_modules",
+    "!templates/*/dist",
+    "!templates/*/.ruff_cache",
+    "!templates/*/*.egg-info",
+    "!templates/*/package-lock.json"
+  ],
   "keywords": [
     "cli",
     "scaffold",
@@ -24,7 +34,6 @@
   "type": "module",
   "dependencies": {
     "@clack/prompts": "^1.0.1",
-    "execa": "^9.6.1",
     "picocolors": "^1.1.1"
   }
 }

@@ -1,0 +1,5 @@
+{
+  "label": "Python (FastAPI)",
+  "description": "Backend Python com SQLAlchemy, Alembic, JWT Auth",
+  "installCmd": "pip install -r requirements.txt"
+}

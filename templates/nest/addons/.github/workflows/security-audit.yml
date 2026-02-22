@@ -1,0 +1,17 @@
+name: Security Audit
+
+on:
+  push:
+    branches: [ main, develop, master, dev ]
+  pull_request:
+    branches: [ main, develop, master, dev ]
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm install
+      - name: Audit components
+        run: npm audit --audit-level=critical

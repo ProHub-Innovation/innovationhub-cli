@@ -1,0 +1,17 @@
+[
+  {
+    "name": "cloudinary",
+    "label": "Cloudinary (Upload de Imagens)",
+    "dest": "app/cloudinary"
+  },
+  {
+    "name": ".github",
+    "label": "GitHub Actions (CI/CD)",
+    "dest": ".github"
+  },
+  {
+    "name": "pre-commit",
+    "label": "Pre-commit (Lint & Formatação)",
+    "dest": "."
+  }
+]

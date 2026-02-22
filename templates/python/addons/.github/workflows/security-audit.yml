@@ -1,0 +1,21 @@
+name: Security Audit
+
+on:
+  push:
+    branches: [main, develop, master, dev]
+  pull_request:
+    branches: [main, develop, master, dev]
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install -e . pip-audit
+      - name: Audit dependencies
+        run: pip-audit

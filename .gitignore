@@ -1,2 +1,7 @@
 node_modules
 package-lock.json
+templates/*/node_modules
+templates/*/dist
+templates/*/.ruff_cache
+templates/*/*.egg-info
+templates/*/package-lock.json

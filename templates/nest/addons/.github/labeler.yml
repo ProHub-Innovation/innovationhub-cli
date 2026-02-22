@@ -1,0 +1,34 @@
+# Area Labels
+area/auth:
+  - src/auth/**/*
+  - src/common/guards/**/*
+  - src/common/decorators/**/*
+
+area/user:
+  - src/user/**/*
+
+area/project:
+  - src/project/**/*
+
+area/news:
+  - src/news/**/*
+
+area/event:
+  - src/event/**/*
+
+# Type Labels (Inferred from files)
+documentation:
+  - README.md
+  - LICENSE
+  - '**/*.md'
+
+ci:
+  - .github/**/*
+
+test:
+  - test/**/*
+  - '**/*.spec.ts'
+
+dependencies:
+  - package.json
+  - package-lock.json
